@@ -16,13 +16,14 @@ import {
   UPDATE_NOTES_LOADING,
   UPDATE_NOTES_SUCCESS,
 } from "./note.types";
+import { BASE_URL } from "../../constants/config";
 
 export const getNotes = () => async (dispatch) => {
   const { token } = store.getState().userReducer;
 
   dispatch({ type: GET_NOTES_LOADING });
   try {
-    const res = await axios("/note", {
+    const res = await axios(BASE_URL + "/note", {
       method: "get",
       headers: {
         Authorization: token,
@@ -48,7 +49,7 @@ export const createNotes = (obj) => async (dispatch) => {
 
   dispatch({ type: CREATE_NOTES_LOADING });
   try {
-    const res = await axios("/note/create", {
+    const res = await axios(BASE_URL + "/note/create", {
       method: "post",
       data: obj,
       headers: {
@@ -76,7 +77,7 @@ export const deleteNotes = (id) => async (dispatch) => {
 
   dispatch({ type: DELETE_NOTES_LOADING });
   try {
-    const res = await axios("/note/", {
+    const res = await axios(BASE_URL + "/note/", {
       method: "delete",
       headers: {
         Authorization: token,
@@ -104,7 +105,7 @@ export const updateNotes = (id, obj) => async (dispatch) => {
 
   dispatch({ type: UPDATE_NOTES_LOADING });
   try {
-    const res = await axios("/note", {
+    const res = await axios(BASE_URL + "/note", {
       method: "patch",
       data: obj,
       headers: {

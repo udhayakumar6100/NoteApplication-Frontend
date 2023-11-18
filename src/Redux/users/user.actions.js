@@ -4,11 +4,12 @@ import {
   LOGIN_USER_LOADING,
   LOGIN_USER_SUCCESS,
 } from "./user.types";
+import { BASE_URL } from "../../constants/config";
 
 export const getUser = (obj) => async (distpatch) => {
   distpatch({ type: LOGIN_USER_LOADING });
   try {
-    let data = await axios("/user/login", {
+    let data = await axios(BASE_URL + "/user/login", {
       method: "post",
       data: obj,
     });

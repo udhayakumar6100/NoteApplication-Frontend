@@ -15,6 +15,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../constants/config";
 
 export default function SignupPage() {
   const nav = useNavigate();
@@ -23,7 +24,7 @@ export default function SignupPage() {
   const [name, setName] = useState("");
 
   const handleSignup = async () => {
-    let data = await axios.post("/user/register", {
+    let data = await axios.post(BASE_URL + "/user/register", {
       name,
       email,
       password,
